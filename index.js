@@ -30,9 +30,13 @@ async function start(req,res){
 
     });
     const dados = getDados(pagina);
-   
-    console.log(dados);
     web.stop();
-    res.json(dados)
+    console.log(dados);
+    if(!dados['ARTE']){
+        res.json({response:false,message:'codigo ou data de nascimento invalidos ou não existe'})
+    }else{
+       res.json(dados) 
+    }
+    
 }
 }

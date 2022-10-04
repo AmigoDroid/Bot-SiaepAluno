@@ -1,7 +1,12 @@
 const urlAlvo = 'https://siaep.educacao.ma.gov.br/frmLoginAluno.aspx';
 
-
- async function login(page,codigo,nascimento){
+async function login(page,codigo,nascimento){
+     let status = false;
+     page.on('dialog', (dialog)=>{
+        console.log(status);
+        return dialog.dismiss().then(()=>{ status = true;}).catch(()=>{ status = true;});
+        
+    })
     await page.goto(urlAlvo);
 
     console.log('esperando ipunt do codigo...');
@@ -15,7 +20,10 @@ const urlAlvo = 'https://siaep.educacao.ma.gov.br/frmLoginAluno.aspx';
 
     console.log('apertando botão login!');
     await page.click('[name="cmdLogin"]');
-
+    if(status){
+        console.log(status);
+        return;
+    }else{
     console.log('esperando o nome aparecer');
     await page.waitForSelector('[name="txtNomeAluno"]');
 
@@ -30,6 +38,9 @@ const urlAlvo = 'https://siaep.educacao.ma.gov.br/frmLoginAluno.aspx';
 
     console.log('esperando o nome aparecer');
     await page.waitForSelector(`[id="lblCabecalho"]`);
-    console.log('BOLETIN DISPONIVEL!');
+    console.log('BOLETIN DISPONIVEL!');  
+    }
 }
+
+
 export default login;
