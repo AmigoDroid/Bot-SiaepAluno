@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.1",
+    "puppeteer": "^17.0.0"
+  },
+  "name": "api_siaep_aluno",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "luciano",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
+}
